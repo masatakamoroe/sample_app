@@ -30,7 +30,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   host = 'localhost:3000' #ローカル環境
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.action_mailer.perform_caching = false
 
@@ -54,4 +54,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  host = 'samplehost'
+  Rails.application.routes.default_url_options[:host] = host
+  config.action_mailer.default_url_options = { host: "samplehost"}
 end
